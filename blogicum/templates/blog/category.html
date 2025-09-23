@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block title %}
-  Публикации в категории «{{ category.title }}»
+  Публикации в категории «{{ category }}»
 {% endblock %}
 {% block content %}
-<h1>Публикации в категории «{{ category.title }}»</h1>
-<p class="mb-5">{{ category.description }}</p>
-{% for post in post_list %}
+<h1>Публикации в категории «{{ category }}»</h1>
+<p class="mb-5">{{ category }}</p>
+{% for post in posts %}
   <article class="mb-5">  
     {% include "includes/post_card.html" %}
   </article>   
