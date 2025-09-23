@@ -52,7 +52,10 @@ def index(request):
 
 def post_detail(request, id):
     """Страница отдельного поста"""
-    post = get_object_or_404(posts, id=id)  # ищем пост по ID
+    post = next((post for post in posts if post['id'] == id), None)
+    if post is None:
+        from django.http import Http404
+        raise Http404("Post not found")
     return render(request, 'blog/detail.html', {'post': post})
 
 
