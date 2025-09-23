@@ -3,7 +3,8 @@
 from django.urls import path
 from . import views
 
-app_name = 'blog'  # noqa: N816  # namespace приложения
+# pylint: disable=C0103
+app_name = 'blog'  # namespace приложения
 
 urlpatterns = [
     path('', views.index, name='index'),
