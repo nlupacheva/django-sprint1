@@ -1,10 +1,11 @@
 <div class="card" style="width: 40rem;">
   <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">
-      <small>
-        {{ post.date }} | {{ post.location }}<br>
-        в категории {% include "includes/category_link.html" %}
-      </small>
+    <h6>
+      <ul>
+        <li><strong>Место:</strong> {{ post.location }}</li>
+        <li><strong>Дата:</strong> {{ post.date }}</li>
+        <li><strong>Категория:</strong> {% include "includes/category_link.html" %}</li>
+      </ul>
     </h6>
     <p class="card-text">{{ post.text|truncatewords:10 }}</p>
     <a href="{% url 'blog:post_detail' post.id %}" class="card-link">Читать полный текст</a>

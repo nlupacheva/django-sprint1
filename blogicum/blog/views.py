@@ -1,4 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+"""Представления для блога."""
+
+from django.shortcuts import render
+from django.http import Http404
 
 # Список постов (вместо базы данных)
 posts = [
@@ -50,20 +53,19 @@ def index(request):
     return render(request, 'blog/index.html', {'posts': posts})
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
     """Страница отдельного поста"""
-    post = next((post for post in posts if post['id'] == id), None)
+    post = next((post for post in posts if post['id'] == post_id), None)
     if post is None:
-        from django.http import Http404
         raise Http404("Post not found")
     return render(request, 'blog/detail.html', {'post': post})
 
 
 def category_posts(request, category_slug):
     """Посты определенной категории"""
-    category_posts = [
+    filtered_posts = [
         post for post in posts if post['category'] == category_slug]
     return render(request, 'blog/category.html', {
-        'posts': category_posts,
+        'posts': filtered_posts,
         'category': category_slug
     })
