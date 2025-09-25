@@ -3,12 +3,5 @@
 {{ post.location }} | {{ post.date }}
 {% endblock %}
 {% block content %}
-  <article>
-    <ul>
-      <li><strong>Место:</strong> {{ post.location }}</li>
-      <li><strong>Дата:</strong> {{ post.date }}</li>
-      <li><strong>Категория:</strong> {% include "includes/category_link.html" %}</li>
-    </ul>
-    <p>{{ post.text|linebreaksbr }}</p>
-  </article>
+  {% include "includes/post_card.html" with show_full_text=True %}
 {% endblock %}

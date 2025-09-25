@@ -47,6 +47,9 @@ posts = [
     },
 ]
 
+# Словарь постов по id для быстрого доступа
+posts_by_id = {post['id']: post for post in posts}
+
 
 def index(request):
     """Главная страница блога"""
@@ -55,7 +58,7 @@ def index(request):
 
 def post_detail(request, post_id):
     """Страница отдельного поста"""
-    post = next((post for post in posts if post['id'] == post_id), None)
+    post = posts_by_id.get(post_id)
     if post is None:
         raise Http404("Post not found")
     return render(request, 'blog/detail.html', {'post': post})

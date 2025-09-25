@@ -1,13 +1,19 @@
-<div class="card" style="width: 40rem;">
-  <div class="card-body">
-    <h6>
-      <ul>
-        <li><strong>Место:</strong> {{ post.location }}</li>
-        <li><strong>Дата:</strong> {{ post.date }}</li>
-        <li><strong>Категория:</strong> {% include "includes/category_link.html" %}</li>
-      </ul>
-    </h6>
-    <p class="card-text">{{ post.text|truncatewords:10 }}</p>
-    <a href="{% url 'blog:post_detail' post.id %}" class="card-link">Читать полный текст</a>
+<article class="mb-5">
+  <div class="card" style="width: 40rem;">
+    <div class="card-body">
+      <h6>
+        <ul>
+          <li><strong>Место:</strong> {{ post.location }}</li>
+          <li><strong>Дата:</strong> {{ post.date }}</li>
+          <li><strong>Категория:</strong> {% include "includes/category_link.html" %}</li>
+        </ul>
+      </h6>
+      {% if show_full_text %}
+        <p class="card-text">{{ post.text|linebreaksbr }}</p>
+      {% else %}
+        <p class="card-text">{{ post.text|truncatewords:10 }}</p>
+        <a href="{% url 'blog:post_detail' post.id %}" class="card-link">Читать полный текст</a>
+      {% endif %}
+    </div>
   </div>
-</div>
+</article>

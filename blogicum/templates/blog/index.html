@@ -4,9 +4,9 @@
 {% endblock %}
 {% block content %}
   <h1 class="mb-5">Лента записей</h1>
+  <hr>
   {% for post in posts %}
-    <article class="mb-5">  
-      {% include "includes/post_card.html" %}
-    </article>   
+    {% include "includes/post_list_item.html" %}
+    {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
 {% endblock %}

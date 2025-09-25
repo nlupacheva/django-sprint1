@@ -1,6 +1,7 @@
 """URL configuration for blog app."""
 
 from django.urls import path
+
 from . import views
 
 # pylint: disable=C0103
